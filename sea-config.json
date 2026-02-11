@@ -1,0 +1,4 @@
+{
+  "main": "generate-pdf-wrapper.cjs",
+  "output": "sea-prep.blob"
+}
