@@ -121,6 +121,74 @@ Raport: /coverage/index.html
 
 ---
 
+
+---
+
+## 6. Kompilacja wrappera CLI (`generate-pdf.exe`)
+
+Projekt umożliwia zbudowanie samodzielnego pliku wykonywalnego `generate-pdf.exe`, który pozwala generować PDF bez uruchamiania aplikacji webowej.
+
+### Budowanie pliku wykonywalnego
+
+1. Zainstaluj zależności:
+
+   ```bash
+   npm i
+   ```
+
+2. Zbuduj wrapper:
+
+   ```bash
+   npm run build-wrapper
+   ```
+
+Po zakończeniu procesu w katalogu projektu zostanie wygenerowany plik `generate-pdf.exe`.
+
+## 7. Użycie CLI
+
+### Składnia:
+
+```
+generate-pdf.exe -- [opcje] <plik-xml>
+```
+
+#### Opcje:
+
+- `-o, --output <plik>`     Ścieżka do wyjściowego pliku PDF (domyślnie: faktura.pdf)
+- `-h, --help`              Pokaż pomoc
+
+#### Uwagi:
+
+Numer KSeF jest automatycznie wykrywany z nazwy pliku XML.
+
+Oczekiwany format nazwy pliku:
+
+```
+<nip>-<data>-<hash>-<kod>.xml
+```
+
+Przykład:
+
+```
+5555555555-20250808-9231003CA67B-BE.xml
+```
+
+Jeśli numer KSeF nie zostanie wykryty, użyta zostanie wartość:
+
+```
+BRAK
+```
+
+#### Przykłady:
+
+```
+generate-pdf.exe -- 5555555555-20250808-9231003CA67B-BE.xml
+
+generate-pdf.exe -- assets/invoice.xml -o output.pdf
+```
+
+---
+
 ## Uwagi
 
 - Upewnij się, że pliki XML są poprawnie sformatowane zgodnie z odpowiednią schemą.
