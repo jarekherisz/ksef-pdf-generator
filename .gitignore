@@ -15,3 +15,6 @@ out
 .idea
 .vscode
 *.swp
+generate-pdf-wrapper.cjs
+generate-pdf.exe
+sea-prep.blob
