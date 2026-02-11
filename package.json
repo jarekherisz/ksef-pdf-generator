@@ -7,7 +7,8 @@
     "type": "tsc -p src/app-public/tsconfig.json --noEmit",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "test:ci": "vitest run --coverage"
+    "test:ci": "vitest run --coverage",
+    "build-wrapper": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"$fuse=(Select-String -Path (Join-Path $env:NVM_SYMLINK 'node.exe') -Pattern 'NODE_SEA_FUSE_[a-f0-9]+' -AllMatches).Matches.Value | Select-Object -First 1; if(-not $fuse){ throw 'Nie znaleziono NODE_SEA_FUSE w node.exe' }; npx esbuild generate-pdf-wrapper.ts --bundle --platform=node --format=cjs --target=node22 --outfile=generate-pdf-wrapper.cjs; node --experimental-sea-config sea-config.json; cmd /c 'del /f /q generate-pdf.exe 2>nul'; Copy-Item (Join-Path $env:NVM_SYMLINK 'node.exe') -Destination 'generate-pdf.exe' -Force; npx postject generate-pdf.exe NODE_SEA_BLOB sea-prep.blob --sentinel-fuse $fuse\""
   },
   "main": "./ksef-fe-invoice-converter.umd.cjs",
   "module": "./ksef-fe-invoice-converter.js",
