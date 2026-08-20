@@ -139,7 +139,7 @@ Projekt umożliwia zbudowanie samodzielnego pliku wykonywalnego `generate-pdf.ex
 2. Zbuduj wrapper:
 
    ```bash
-   npm run build-wrapper
+   npm run build-wrapper-win
    ```
 
 Po zakończeniu procesu w katalogu projektu zostanie wygenerowany plik `generate-pdf.exe`.
